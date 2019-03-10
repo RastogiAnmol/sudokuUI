@@ -1,7 +1,7 @@
 // Action Creators =====================================
 const actions = {
   api: {
-      // change the url of the api after hostig swagger
+    // change the url of the api after hostig swagger
     GET_SUDOKU_SOLUTION: "https://localhost:44371/api/SudokuSolver/solve"
   },
   //---------------------------------
@@ -19,22 +19,27 @@ const actions = {
         });
         arrayOfArrays.push(array);
       });
-        $.ajax({
-          url: actions.api.GET_SUDOKU_SOLUTION,
-          type: "POST",
-          data: {
-            input: arrayOfArrays
-          },
-          success: function(result) {
-              Store.dispatch({
-                type: "GIVE_SOLUTION",
-                result: result
-              });
-          }
-        });
-        // use this for test
-    //     result = arrayOfArrays;
-    //   dispatch({ type: "GIVE_SOLUTION", result: result });
+      dt = [];
+      dt.push([1,2,3,4]);
+      dt.push([2,3,4,5]);
+      $.ajax({
+        url: actions.api.GET_SUDOKU_SOLUTION,
+        type: "POST",
+          data: JSON.stringify(arrayOfArrays),
+        contentType: "application/json; charset=utf-8",
+        success: function(result) {
+          dispatch({
+            type: "GIVE_SOLUTION",
+            result: result
+          });
+        },
+        error: function(error) {
+          alert(JSON.stringify(error));
+        }
+      });
+      // use this for test
+      //     result = arrayOfArrays;
+      //   dispatch({ type: "GIVE_SOLUTION", result: result });
     };
   }
 };
