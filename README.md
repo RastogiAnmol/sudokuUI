@@ -2,7 +2,7 @@
 ### Building locally
 
 ## This game uses Redux for state management and swagger for game solution.
-# URL for swagger project https://github.com/RastogiAnmol/sudoku.git
+# URL of swagger project https://github.com/RastogiAnmol/sudoku.git
 Prerequisites:
 
 - NodeJS
