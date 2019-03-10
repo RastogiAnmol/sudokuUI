@@ -1,7 +1,8 @@
 ## Sudoku
 ### Building locally
 
-## I have modified sudoku game present on internet to use backend swagger API
+## This game uses Redux for state management and swagger for game solution.
+# URL for swagger project https://github.com/RastogiAnmol/sudoku.git
 Prerequisites:
 
 - NodeJS
