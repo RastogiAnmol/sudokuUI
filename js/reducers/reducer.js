@@ -21,9 +21,11 @@ const Reducer = function(isAdmin) {
         state.game.cells[action.i][action.j].value = action.value;
         break;
       case "GIVE_SOLUTION":
-      console.log(state.game);
-        console.log("Please use this solution for the game\n");
-        console.log(action.result);
+        state.game.cells.forEach(function(element,i){
+          element.forEach(function(ele,j){
+            ele.value = action.result[i][j];
+          });
+        });
         break;
       case "ADD_SECOND":
         if (state.game) {

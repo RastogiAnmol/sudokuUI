@@ -19,9 +19,6 @@ const actions = {
         });
         arrayOfArrays.push(array);
       });
-      dt = [];
-      dt.push([1,2,3,4]);
-      dt.push([2,3,4,5]);
       $.ajax({
         url: actions.api.GET_SUDOKU_SOLUTION,
         type: "POST",
