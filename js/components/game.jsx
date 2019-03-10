@@ -3,6 +3,7 @@ var Store = require("../store/store");
 var Sudoku = require("./sudoku");
 var Boards = require("./boards");
 import { Link } from "react-router";
+import actions from "../actions/actions";
 
 class Cell extends React.Component {
   constructor(props) {
@@ -86,7 +87,7 @@ class Controls extends React.Component {
     });
   }
   giveMeSolution() {
-    Store.dispatch({ type: "GIVE_SOLUTION"});
+    Store.dispatch(actions.returnSudokuSolution(this.state.game.cells));
   }
   componentWillUnmount() {
     this.unsubscribe();
