@@ -3,125 +3,9 @@ var Store = require("../store/store");
 var Sudoku = require("../utils/sudokuService");
 import { Link } from "react-router";
 import actions from "../actions/actions";
+import BoardCell from './BoardCell';
+import Controls from './Controls';
 
-class Cell extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onClick = this.onClick.bind(this);
-    this.onChange = this.onChange.bind(this);
-  }
-
-  shouldComponentUpdate(newProps, newState) {
-    var oldCell = this.props.cell;
-    var newCell = newProps.cell;
-    return (
-      oldCell.value !== newCell.value ||
-      oldCell.editable !== newCell.editable ||
-      oldCell.hasConflict !== newCell.hasConflict
-    );
-  }
-
-  render() {
-    var cell = this.props.cell;
-
-    var classes = [];
-    classes.push("i" + cell.i);
-    classes.push("j" + cell.j);
-    classes.push(cell.editable ? "editable" : "not-editable");
-    classes.push(cell.hasConflict ? "has-conflict" : "no-conflict");
-
-    return (
-      <td className={classes.join(" ")}>
-        <input
-          type="tel"
-          value={cell.value}
-          onClick={this.onClick}
-          onChange={this.onChange}
-        />
-      </td>
-    );
-  }
-
-  onClick(event) {
-    event.preventDefault();
-    if (this.props.cell.editable) {
-      event.target.select();
-    } else {
-      event.target.blur();
-    }
-  }
-
-  onChange(event) {
-    event.preventDefault();
-    var cell = this.props.cell;
-    if (!cell.editable) {
-      return;
-    }
-    var newValue = event.target.value;
-    if (newValue !== "" && !/^[1-9]$/.test(newValue)) {
-      event.target.value = cell.value;
-      return;
-    }
-    Store.dispatch({
-      type: "CHANGE_VALUE",
-      i: cell.i,
-      j: cell.j,
-      value: newValue === "" ? null : parseInt(newValue)
-    });
-  }
-}
-
-class Controls extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = Store.getState();
-    this.giveMeSolution = this.giveMeSolution.bind(this);
-  }
-
-  componentDidMount() {
-    var self = this;
-    self.unsubscribe = Store.subscribe(function() {
-      self.setState(Store.getState());
-    });
-  }
-  giveMeSolution() {
-    Store.dispatch(actions.returnSudokuSolution(this.state.game.cells));
-  }
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  render() {
-    var time = this.state.game.time;
-    function f(num) {
-      if (num < 10) {
-        return "0" + num;
-      } else {
-        return "" + num;
-      }
-    }
-    return (
-      <div className="controls">
-        <p>
-          <Link to="/">Back</Link>
-        </p>
-        {Sudoku.isComplete(this.state.game.cells) ? (
-          <p className="congratulations">Congratulations!</p>
-        ) : (
-          <p>
-            {f(time.getHours()) +
-              ":" +
-              f(time.getMinutes()) +
-              ":" +
-              f(time.getSeconds())}
-          </p>
-        )}
-        <button onClick={this.giveMeSolution}>Give me solution</button>
-      </div>
-    );
-  }
-}
 
 class DifficultyDialog extends React.Component {
   shouldComponentUpdate(newProps, newState) {
@@ -210,7 +94,7 @@ class Game extends React.Component {
               return (
                 <tr key={i}>
                   {line.map(function(cell) {
-                    return <Cell cell={cell} key={cell.j} />;
+                    return <BoardCell cell={cell} key={cell.j} />;
                   })}
                 </tr>
               );
