@@ -1,7 +1,6 @@
 var React = require("react");
 var Store = require("../store/store");
-var Sudoku = require("./sudoku");
-var Boards = require("./boards");
+var Sudoku = require("../utils/sudokuService");
 import { Link } from "react-router";
 import actions from "../actions/actions";
 

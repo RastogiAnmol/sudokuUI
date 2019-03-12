@@ -1,5 +1,5 @@
 var Boards = require("../components/boards");
-var Sudoku = require("../components/sudoku");
+var Sudoku = require("../utils/sudokuService");
 var cloneDeep = require("lodash.clonedeep");
 
 const Reducer = function(isAdmin) {
@@ -15,14 +15,16 @@ const Reducer = function(isAdmin) {
         state.game.time = new Date(state.game.time);
         break;
       case "NEW_GAME":
-        state.game = Sudoku.boardToGame(Boards.randomBoard(action.difficulty));
+        state.game = Sudoku.createGameFromARandomBoard(
+          Boards.randomBoard(action.difficulty)
+        );
         break;
       case "CHANGE_VALUE":
         state.game.cells[action.i][action.j].value = action.value;
         break;
       case "GIVE_SOLUTION":
-        state.game.cells.forEach(function(element,i){
-          element.forEach(function(ele,j){
+        state.game.cells.forEach(function(element, i) {
+          element.forEach(function(ele, j) {
             ele.value = action.result[i][j];
           });
         });
@@ -34,7 +36,7 @@ const Reducer = function(isAdmin) {
         break;
     }
     if (state.game) {
-      Sudoku.checkConflicts(state.game.cells);
+      Sudoku.isSudokuValid(state.game.cells);
       localStorage.currentGame = JSON.stringify(state.game);
     }
     return state;
