@@ -30,7 +30,7 @@ class BoardCell extends React.Component {
     return (
       <td className={cellClasses.join(" ")}>
         <input
-          type="tel"
+          type="text"
           value={cell.value}
           onClick={this.onClick}
           onChange={this.onChange}

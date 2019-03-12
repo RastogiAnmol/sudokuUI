@@ -1,10 +1,9 @@
 var React = require("react");
 var Store = require("../store/store");
 var Sudoku = require("../utils/sudokuService");
-import { Link } from "react-router";
 import actions from "../actions/actions";
 
-class Controls extends React.Component {
+class SolutionButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = Store.getState();
@@ -25,31 +24,21 @@ class Controls extends React.Component {
   }
 
   render() {
-    var time = this.state.game.time;
-    function f(num) {
-      if (num < 10) {
-        return "0" + num;
-      } else {
-        return "" + num;
-      }
-    }
     return (
       <div className="controls">
         {Sudoku.isComplete(this.state.game.cells) ? (
-          <div><h2 className="hurray">Hurray!</h2></div>
+          <div>
+            <h2 className="hurray">Hurray! You have completed</h2>
+          </div>
         ) : (
-          <p>
-            {f(time.getHours()) +
-              ":" +
-              f(time.getMinutes()) +
-              ":" +
-              f(time.getSeconds())}
-          </p>
+          <span />
         )}
-        <button onClick={this.giveMeSolution}>Give me solution</button>
+        <button className="buttonShowSol" onClick={this.giveMeSolution}>
+          Give me solution
+        </button>
       </div>
     );
   }
 }
 
-module.exports = Controls;
+module.exports = SolutionButton;

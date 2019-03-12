@@ -1,22 +1,18 @@
-var Boards = require("../components/boards");
-var Sudoku = require("../utils/sudokuService");
-var cloneDeep = require("lodash.clonedeep");
+var SudokuGenerator = require("../utils/sudokuGenerator");
+var SudokuService = require("../utils/sudokuService");
+var clone = require("lodash.clonedeep");
 
 const Reducer = function(isAdmin) {
   return function boardReducer(state, action) {
     if (!state) {
       state = {};
     } else {
-      state = cloneDeep(state);
+      state = clone(state);
     }
     switch (action.type) {
-      case "RESUME_GAME":
-        state.game = JSON.parse(localStorage.currentGame);
-        state.game.time = new Date(state.game.time);
-        break;
       case "NEW_GAME":
-        state.game = Sudoku.createGameFromARandomBoard(
-          Boards.randomBoard(action.difficulty)
+        state.game = SudokuService.createGameFromARandomBoard(
+          SudokuGenerator.randomBoard()
         );
         break;
       case "CHANGE_VALUE":
@@ -29,14 +25,9 @@ const Reducer = function(isAdmin) {
           });
         });
         break;
-      case "ADD_SECOND":
-        if (state.game) {
-          state.game.time.setSeconds(state.game.time.getSeconds() + 1);
-        }
-        break;
     }
     if (state.game) {
-      Sudoku.isSudokuValid(state.game.cells);
+      SudokuService.isSudokuValid(state.game.cells);
       localStorage.currentGame = JSON.stringify(state.game);
     }
     return state;

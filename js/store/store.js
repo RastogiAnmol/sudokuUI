@@ -2,7 +2,6 @@ var Redux = require("redux");
 var boardReducer = require("../reducers/reducer");
 var Redux = require("redux");
 var thunk = require("redux-thunk");
-var cloneDeep = require("lodash.clonedeep");
 const applyMiddleware = require("redux").applyMiddleware;
 
 

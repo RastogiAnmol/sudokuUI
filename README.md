@@ -1,6 +1,4 @@
 ## Sudoku
-### Building locally
-
 ## This game uses Redux for state management and swagger for game solution.
 # URL of swagger project https://github.com/RastogiAnmol/sudoku.git
 Prerequisites:
@@ -12,6 +10,6 @@ Prerequisites:
 
 ```bash
 $ npm install
-$ npm run buildjs
+$ npm run build
 $ npm run buildcss
 ```

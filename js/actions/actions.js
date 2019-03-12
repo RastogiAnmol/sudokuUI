@@ -12,9 +12,6 @@ const actions = {
       currentState.forEach(function(element) {
         array = [];
         element.forEach(function(ele) {
-          // if (!ele.value) {
-          //   ele.value = 0;
-          // }
           array.push(ele.value);
         });
         arrayOfArrays.push(array);
@@ -34,9 +31,6 @@ const actions = {
           alert(JSON.stringify(error));
         }
       });
-      // use this for test
-      //     result = arrayOfArrays;
-      //   dispatch({ type: "GIVE_SOLUTION", result: result });
     };
   }
 };
