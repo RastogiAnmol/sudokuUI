@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainPageComponent should render correctly in "debug" mode 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <MainPage
+    debug={true}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h2>
+          Shall we play Sudoku
+        </h2>,
+        <Link
+          className="buttonShowSol"
+          onlyActiveOnIndex={false}
+          style={Object {}}
+          to="new-game"
+        >
+          Let's start a new game
+        </Link>,
+      ],
+      "className": "index",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Shall we play Sudoku",
+        },
+        "ref": null,
+        "rendered": "Shall we play Sudoku",
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Let's start a new game",
+          "className": "buttonShowSol",
+          "onlyActiveOnIndex": false,
+          "style": Object {},
+          "to": "new-game",
+        },
+        "ref": null,
+        "rendered": "Let's start a new game",
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h2>
+            Shall we play Sudoku
+          </h2>,
+          <Link
+            className="buttonShowSol"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="new-game"
+          >
+            Let's start a new game
+          </Link>,
+        ],
+        "className": "index",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Shall we play Sudoku",
+          },
+          "ref": null,
+          "rendered": "Shall we play Sudoku",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Let's start a new game",
+            "className": "buttonShowSol",
+            "onlyActiveOnIndex": false,
+            "style": Object {},
+            "to": "new-game",
+          },
+          "ref": null,
+          "rendered": "Let's start a new game",
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFourteenAdapter {
+      "options": Object {
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
+          },
+        },
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;
